@@ -2,7 +2,7 @@
 
 We're using a VPS (virtual private server) at Media Temple to setup a simple Linux box.
 
-1. Setup a (ve) Server. <http://mediatemple.net/webhosting/ve/>
+1. Setup a (ve) Server. http://mediatemple.net/webhosting/ve/
 2. Associate your domain, like `vrtgo.cc`, in their DNS configuration.
 3. Set the OS to Ubuntu Lucid (the default recommendation).
 4. Enable SSH and change the root password.
