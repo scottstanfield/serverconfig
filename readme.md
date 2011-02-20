@@ -8,11 +8,8 @@ We're using a VPS (virtual private server) at Media Temple to setup a simple Lin
 3. Set the OS to Ubuntu Lucid (the default recommendation).
 4. Enable SSH and change the root password.
 
-	`
-	first line of a code block
-	second line
-	`
-
+     first line of code
+    second line
 
 Add Users
 ---------
