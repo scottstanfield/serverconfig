@@ -16,14 +16,14 @@ We're using a VPS (virtual private server) at Media Temple to setup a simple Lin
 ## Add Users
 1. Login as root and add a new user. From Mac OS Terminal:
 
-	ssh root@vrtgo.cc
-	root@vrtgo.cc's password: ****
+	ssh root@vrtgo.cc  
+	root@vrtgo.cc's password: ****  
 
 Add a new user named `scott`, and give this account `su` privileges with `visudo`
 
 ```
-% adduser scott
-% visudo
+% adduser scott  
+% visudo  
 ```
 
 You're running the `nano` editor. Add the following line below the root user:
