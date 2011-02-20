@@ -1,4 +1,5 @@
-# Media Temple
+Media Temple
+============
 
 We're using a VPS (virtual private server) at Media Temple to setup a simple Linux box.
 
@@ -13,7 +14,9 @@ We're using a VPS (virtual private server) at Media Temple to setup a simple Lin
 	`
 
 
-## Add Users
+Add Users
+---------
+
 1. Login as root and add a new user. From Mac OS Terminal:
 
 	ssh root@vrtgo.cc  
@@ -34,7 +37,8 @@ scott	ALL=(ALL) ALL
 
 Save and quit. Log out of `root` and reconnect as your new account.
 
-## Install GIT
+Install GIT
+-----------
 
 ```
 % sudo apt-get update
