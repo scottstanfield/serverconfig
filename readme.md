@@ -11,7 +11,6 @@ We're using a VPS (virtual private server) at Media Temple to setup a simple Lin
     first line of a code block
     second line
 
-
 Add Users
 ---------
 
