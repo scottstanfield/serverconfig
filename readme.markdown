@@ -8,16 +8,32 @@ We're using a VPS (virtual private server) at Media Temple to setup a simple Lin
 3. Set the OS to Ubuntu Lucid (the default recommendation).
 4. Enable SSH and change the root password.
 
-    first line of a code block
-    second line
+Update Software
+---------------
+The first four shell actions (as root) will update the Ubuntu release,
+with the exception of the `ifupdown` package, which causes the server 
+network config to not "sync" with the OpenVZ manager. (An attempt at a fix
+was made by user "twb" here: http://paste.debian.net/108679, but it didn't work).
+
+* Change the default location for `aptitude` files from /tmp to /var/local/tmp 
+
+		# wget -q paste.debian.net/plain/108685 -O - | sh
+
+* Update installation (except for `ifupdown`)
+
+		# aptitude update
+		# aptitude hold ifupdown
+		# aptitude upgrade
+
+* While not necessary, I would `reboot` just in case. Ping until back up.
 
 Add Users
 ---------
 
 1. Login as root and add a new user. From Mac OS Terminal:
 
-    ssh root@vrtgo.cc  
-    root@vrtgo.cc's password: ****  
+		ssh root@vrtgo.cc  
+		root@vrtgo.cc's password: ****  
 
 Add a new user named `scott`, and give this account `su` privileges with `visudo`
 
