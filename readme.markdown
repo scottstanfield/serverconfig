@@ -27,6 +27,8 @@ was made by user "twb" here: http://paste.debian.net/108679, but it didn't work)
 
 * While not necessary, I would `reboot` just in case. Ping until back up.
 
+		# reboot
+
 Add Users
 ---------
 
@@ -35,37 +37,29 @@ Add Users
 		ssh root@vrtgo.cc  
 		root@vrtgo.cc's password: ****  
 
-Add a new user named `scott`, and give this account `su` privileges with `visudo`
+2. Add a new user named `scott`, and give this account `su` privileges with `visudo`
 
-```
-% adduser scott  
-% visudo  
-```
+		% adduser scott  
+		% visudo  
 
 You're running the `nano` editor. Add the following line below the root user:
 
-```
-scott	ALL=(ALL) ALL
-```
+		scott	ALL=(ALL) ALL
 
 Save and quit. Log out of `root` and reconnect as your new account.
 
 Install GIT
 -----------
 
-```
-% sudo apt-get update
-% sudo apt-get install git-core
-% git version
-```
+		% sudo aptitude install git-core
+		% git version
+
 I had to logout at this point to have git show up in the file system. I know there's a command here to fix that. 
 
 ## Change shell to tcsh
 I don't like using bash for interactive shell. I'm a c-shell guy.
 
-```csh
-% chsh -s "/bin/tcsh"
-```
+		% chsh -s "/bin/tcsh"
 
 ## Generate SSH keys
 ## Install Ruby
