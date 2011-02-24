@@ -34,39 +34,89 @@ Add Users
 
 1. Login as root and add a new user. From Mac OS Terminal:
 
-		ssh root@vrtgo.cc  
-		root@vrtgo.cc's password: ****  
+		> ssh root@vrtgo.cc  
+		> root@vrtgo.cc's password: ****  
 
 2. Add a new user named `scott`, and give this account `su` privileges with `visudo`
 
-		% adduser scott  
-		% visudo  
+		# adduser scott  
+		# visudo  
 
-You're running the `nano` editor. Add the following line below the root user:
+3. Add the following line below the root user:
 
 		scott	ALL=(ALL) ALL
 
-Save and quit. Log out of `root` and reconnect as your new account.
+Save and quit. Enter `exit` and reconnect as your new account.
 
-Install GIT
+
+Secure SSH with keys
+--------------------
+On your Mac, generate a keypair. Make sure you use a phassphrase! 
+
+		> ssh-keygen 
+
+Now, to transfer your client public key to the server, you need `ssh-copy-id`
+which doesn't come on Mac OS X. Fortunately, there's a bash script on our 
+main server, that you can simply copy down to your home folder:
+
+		> scp scott@vrtgo.cc:/usr/bin/ssh-copy-id ssh-copy-id
+
+Run the script to copy your keys, then log back in.
+
+		> ssh-copy-id scott@vrtgo.cc
+		> ssh scott@vrtgo.cc
+
+If the last line worked, you were able to login *without* your password.
+
+
+Disable Root Login
+------------------
+You can still `su` as root, but we need to remove this big security hole.
+
+		$ sudo vi /etc/ssh/sshd_config
+	
+Change the PermitRootLogin to "no". There are other tweeks we can make later.
+	
+		PermitRootLogin no
+
+Save the file and restart the SSH Server
+
+		$ sudo /etc/init.d/ssh restart
+	
+
+Setup Shell 
 -----------
+We install GIT right away in order to pull down the .cshrc and .vimrc files.
 
-		% sudo aptitude install git-core
-		% git version
+		$ sudo aptitude install git-core
+		$ git version
 
 I had to logout at this point to have git show up in the file system. I know there's a command here to fix that. 
 
 ## Change shell to tcsh
 I don't like using bash for interactive shell. I'm a c-shell guy.
 
-		% chsh -s "/bin/tcsh"
+		$ chsh -s "/bin/tcsh"
 
-## Generate SSH keys
+
 ## Install Ruby
+
+Install minimal set of Ruby files in order to install our .dotfiles
+
+		% sudo apt-get install --no-install-recommends ruby-full
+
 ## Install dotfiles
 
+		% cd ~
+		% git clone git://github.com/rm8t/dotfiles.git .dotfiles
+		% cd .dotfiles
+		% ./install
 
-***
+
+TODO
+----
+Install `fail2ban`
+
 
 End of file
 
