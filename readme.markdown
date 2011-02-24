@@ -31,7 +31,6 @@ was made by user "twb" here: http://paste.debian.net/108679, but it didn't work)
 
 Add Users
 ---------
-
 1. Login as root and add a new user. From Mac OS Terminal:
 
 		> ssh root@vrtgo.cc  
@@ -46,7 +45,9 @@ Add Users
 
 		scott	ALL=(ALL) ALL
 
-Save and quit. Enter `exit` and reconnect as your new account.
+Save and `exit` back to Mac OS X Terminal.
+
+		# exit
 
 
 Secure SSH with keys
@@ -69,20 +70,33 @@ Run the script to copy your keys, then log back in.
 If the last line worked, you were able to login *without* your password.
 
 
-Disable Root Login
+Harden VPS ssh
 ------------------
 You can still `su` as root, but we need to remove this big security hole.
 
 		$ sudo vi /etc/ssh/sshd_config
 	
-Change the PermitRootLogin to "no". There are other tweeks we can make later.
+Look for, and change the following lines:
 	
+		Port 54321 # Change from port 22 to something above 22 (but not 54321)
 		PermitRootLogin no
+		PasswordAuthentication no
+		X11Forwarding no
+		UsePAM no
+		UseDNS no
+		AllowUsers bob alice mary
 
 Save the file and restart the SSH Server
 
 		$ sudo /etc/init.d/ssh restart
-	
+		$ exit
+
+Tell your Mac SSH about the new default port
+
+		> touch ~/.ssh/config
+		> echo "Port 54321" >> ~/.ssh/config
+		> ssh scott@vrtgo.cc
+
 
 Setup Shell 
 -----------
