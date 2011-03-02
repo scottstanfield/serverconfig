@@ -8,6 +8,10 @@ We're using a VPS (virtual private server) at Media Temple to setup a simple Lin
 3. Set the OS to Ubuntu Lucid (the default recommendation).
 4. Enable SSH and change the root password.
 
+References:
+http://wiki.mediatemple.net/w/(ve):Get_started_with_Ubuntu
+http://bryanhelmig.com/setting-up-ubuntu-10-04-with-apache-memcached-ufw-mysql-and-django-1-2-on-linode/
+
 Update Software
 ---------------
 The first four shell actions (as root) will update the Ubuntu release,
@@ -107,29 +111,72 @@ We install GIT right away in order to pull down the .cshrc and .vimrc files.
 
 I had to logout at this point to have git show up in the file system. I know there's a command here to fix that. 
 
-## Change shell to tcsh
+### Change shell to tcsh
 I don't like using bash for interactive shell. I'm a c-shell guy.
 
 		$ chsh -s "/bin/tcsh"
 
 
-## Install Ruby
+### Install Ruby
 
 Install minimal set of Ruby files in order to install our .dotfiles
 
 		% sudo apt-get install --no-install-recommends ruby-full
 
-## Install dotfiles
+### Install dotfiles
 
 		% cd ~
 		% git clone git://github.com/rm8t/dotfiles.git .dotfiles
 		% cd .dotfiles
 		% ./install
 
+Firewall
+--------
+Install `ufw` or Uncomplicated Firewall
+
+		% su
+		# aptitude install ufw
+
+Note: ufw really doesn't like to work with OpenVZ on Ubuntu. 
+Follow the steps at http://blog.bodhizazen.net/linux/how-to-use-ufw-in-openvz-templates
+And next time, use `iptables`
+
+		% ... 
+
+Enable in this order
+
+		# ufw allow 54321		# or whatever the new SSH port is
+		# ufw enable
+		# ufw default deny
+		# ufw enable http
+		# ufw enable https
+		# ufw status verbose
+		# exit
+		%
+
+Web Server (nginx)
+------------------
+Using nginx (a static, fast web server)
+
+		% sudo aptitude update
+		% sudo aptitude intall nginx
+		% sudo /etc/ini/d/nginx start
+		% lynx localhost
+
+Change `server_name` entry to your-domain.com (from localhost).
+
+		% sudo vi /etc/nginx/sites-available/default
+		% lynx your-domain.com
+		
+
+
 
 TODO
 ----
+Setup email
+Install nginx and django
 Install `fail2ban`
+Install webmin on ubuntu 10.04
 
 
 End of file
