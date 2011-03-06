@@ -3,13 +3,16 @@ Media Temple
 
 We're using a VPS (virtual private server) at Media Temple to setup a simple Linux box.
 
-1. Setup a (ve) Server. http://mediatemple.net/webhosting/ve/
+1. Setup a (ve) Server. [(me)][2]
 2. Associate your domain, like `vrtgo.cc`, in their DNS configuration.
 3. Set the OS to Ubuntu Lucid (the default recommendation).
 4. Enable SSH and change the root password.
 
-References:
-http://bit.ly/bundles/vertigo/1
+I put a [bundle of bit.ly links][1] together for more info.
+
+[1]: http://bit.ly/bundles/vertigo/1  
+[2]: http://mediatemple.net/webhosting/ve/
+[3]: http://vpsbible.com/security/harden-ssh-create-firewall/
 
 Update Software
 ---------------
@@ -131,27 +134,11 @@ Install minimal set of Ruby files in order to install our .dotfiles
 
 Firewall
 --------
-Install `ufw` or Uncomplicated Firewall
+We're using a custom `iptables` configuration. The directions are at [vpsbible.com][3]. You need a username and password to access the site. I'll put the details in here later.
 
-		% su
-		# aptitude install ufw
+Note: I previously had notes on configuring `ufw` but never got it to work reliably. It really doesn't like to work with OpenVZ on Ubuntu. 
+You can follow the steps at http://blog.bodhizazen.net/linux/how-to-use-ufw-in-openvz-templates
 
-Note: ufw really doesn't like to work with OpenVZ on Ubuntu. 
-Follow the steps at http://blog.bodhizazen.net/linux/how-to-use-ufw-in-openvz-templates
-And next time, use `iptables`
-
-		% ... 
-
-Enable in this order
-
-		# ufw allow 54321		# or whatever the new SSH port is
-		# ufw enable
-		# ufw default deny
-		# ufw enable http
-		# ufw enable https
-		# ufw status verbose
-		# exit
-		%
 
 Web Server (nginx)
 ------------------
@@ -167,7 +154,6 @@ Change `server_name` entry to your-domain.com (from localhost).
 		% sudo vi /etc/nginx/sites-available/default
 		% lynx your-domain.com
 		
-
 
 
 TODO
