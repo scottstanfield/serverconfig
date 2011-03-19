@@ -16,10 +16,11 @@ I put a [bundle of bit.ly links][1] together for more info.
 
 Update Software
 ---------------
-The first four shell actions (as root) will update the Ubuntu release,
-with the exception of the `ifupdown` package, which causes the server 
-network config to not "sync" with the OpenVZ manager. (An attempt at a fix
-was made by user "twb" here: http://paste.debian.net/108679, but it didn't work).
+The first four shell actions (as root) will update the Ubuntu release, with the
+exception of the `ifupdown` package, which causes the server network config to
+not "sync" with the OpenVZ manager. (An attempt at a fix was made by user "twb"
+here: http://paste.debian.net/108679, but it didn't work).
+
 
 * Change the default location for `aptitude` files from /tmp to /var/local/tmp 
 
@@ -154,6 +155,15 @@ Change `server_name` entry to your-domain.com (from localhost).
 		% sudo vi /etc/nginx/sites-available/default
 		% lynx your-domain.com
 		
+
+vim
+---
+TODO: finish this next
+Check out the [VIM setup bundles][5]
+
+[5]: http://bit.ly/bundles/vertigo/4
+
+
 
 
 TODO
