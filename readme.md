@@ -164,6 +164,15 @@ Check out the [VIM setup bundles][5]
 [5]: http://bit.ly/bundles/vertigo/4
 
 
+GIT
+===
+TODO: Test install 
+
+		% git config --global user.name "Your Name"
+		% git config --global user.email "foo@bar.com"
+
+TODO: Add aliases
+TODO: Link to the peepcode videos
 
 
 TODO
