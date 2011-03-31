@@ -163,6 +163,7 @@ Check out the [VIM setup bundles][5]
 
 [5]: http://bit.ly/bundles/vertigo/4
 
+Install Ack to search files from git
 
 GIT
 ===
@@ -181,6 +182,24 @@ Setup email
 Install nginx and django
 Install `fail2ban`
 Install webmin on ubuntu 10.04
+
+Mac OS X
+--------
+Install iTerm2 (Terminal.app replacement)
+	Map visor hotkey to command-grave 
+	Colors: https://github.com/hardcore/iTerm-colors
+
+Install Xcode tools (for Unix development)
+
+Install TotalFinder
+
+Install MacPorts
+		% sudo port -v selfupdate
+
+Install vim 7.3 (OS X ships w/7.2) and Ruby (for Command-T app)
+
+Map CAPS to control key for `keyboard` preferences. You won't miss it.
+
 
 
 End of file
