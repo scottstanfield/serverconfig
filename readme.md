@@ -67,6 +67,7 @@ Now, to transfer your client public key to the server, you need `ssh-copy-id`
 which doesn't come on Mac OS X. Fortunately, there's a bash script on our 
 main server, that you can simply copy down to your home folder:
 
+		> cd ~/.ssh
 		> scp scott@vrtgo.cc:/usr/bin/ssh-copy-id ssh-copy-id
 
 Run the script to copy your keys, then log back in.
@@ -75,6 +76,7 @@ Run the script to copy your keys, then log back in.
 		> ssh scott@vrtgo.cc
 
 If the last line worked, you were able to login *without* your password.
+
 
 
 Harden VPS ssh
@@ -155,6 +157,12 @@ Change `server_name` entry to your-domain.com (from localhost).
 		% sudo vi /etc/nginx/sites-available/default
 		% lynx your-domain.com
 		
+Email
+-----
+Using postfix and mailutils
+
+		% sudo aptitude install postfix
+		% sudo aptitude install mailutils
 
 vim
 ---
@@ -175,6 +183,10 @@ TODO: Test install
 TODO: Add aliases
 TODO: Link to the peepcode videos
 
+Apache
+------
+Enable gzip compression:
+	http://hints.macworld.com/comment.php?mode=view&cid=24956
 
 TODO
 ----
@@ -200,6 +212,9 @@ Install vim 7.3 (OS X ships w/7.2) and Ruby (for Command-T app)
 
 Map CAPS to control key for `keyboard` preferences. You won't miss it.
 
+Install mutt to read Gmail
+		% sudo port install mutt-devel +headercache +imap +ssl
+		
 
 
 End of file
