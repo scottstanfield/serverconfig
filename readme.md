@@ -217,6 +217,4 @@ Install mutt to read Gmail
 		
 
 
-End of file
-
 
